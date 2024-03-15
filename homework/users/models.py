@@ -3,7 +3,6 @@ from django.db import models
 from django.conf import settings
 from homework.lms.models import Course, Lesson
 
-
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
@@ -24,3 +23,7 @@ class Payment(models.Model):
     class Meta:
         verbose_name = 'Payment'
         verbose_name_plural = 'Payments'
+class Course(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
