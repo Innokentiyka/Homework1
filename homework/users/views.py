@@ -11,6 +11,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import generics
 from .serializers import UserSerializer
 
+
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
@@ -26,6 +27,8 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
 class CreateUserView(generics.CreateAPIView):
     model = get_user_model()
     serializer_class = UserSerializer

@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from homework.lms.models import Course, Lesson
 
+
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
@@ -11,6 +12,7 @@ class CustomUser(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
+
 
 class Payment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -23,6 +25,8 @@ class Payment(models.Model):
     class Meta:
         verbose_name = 'Payment'
         verbose_name_plural = 'Payments'
+
+
 class Course(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
